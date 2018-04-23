@@ -4,20 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>罗宾的木屋</title>
+    <title>svg批量转化为pdf | 罗宾的木屋</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Robin">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="罗宾的木屋">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="程序员都是比较懒的人, 至少我是这样, 把一个svg转成pdf, 我可以在网上找找在线转化, 三个以上, 我就不伺候了, 就要找工具实现批量转化, 就像常说的那样, 很多事情做起来费劲, 多半使我们的方法不对. 类似这种体力活, 我们就需要换个思路. Inkscape介绍Inkscape是一套向量图形编辑器，以自由软件授权发布与使用。该软件的开发目标是成为一套强力的绘图软件，且能完全遵循与支持XM">
+<meta name="keywords" content="svg, iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="svg批量转化为pdf">
+<meta property="og:url" content="http://yoursite.com/2018/04/21/SVG2PDF/index.html">
 <meta property="og:site_name" content="罗宾的木屋">
+<meta property="og:description" content="程序员都是比较懒的人, 至少我是这样, 把一个svg转成pdf, 我可以在网上找找在线转化, 三个以上, 我就不伺候了, 就要找工具实现批量转化, 就像常说的那样, 很多事情做起来费劲, 多半使我们的方法不对. 类似这种体力活, 我们就需要换个思路. Inkscape介绍Inkscape是一套向量图形编辑器，以自由软件授权发布与使用。该软件的开发目标是成为一套强力的绘图软件，且能完全遵循与支持XM">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://media.inkscape.org/media/cms_page_media/328/x11pref_input.png">
+<meta property="og:image" content="https://media.inkscape.org/media/cms_page_media/328/x11pref_pasteboard.png">
+<meta property="og:updated_time" content="2018-04-23T03:46:48.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="罗宾的木屋">
+<meta name="twitter:title" content="svg批量转化为pdf">
+<meta name="twitter:description" content="程序员都是比较懒的人, 至少我是这样, 把一个svg转成pdf, 我可以在网上找找在线转化, 三个以上, 我就不伺候了, 就要找工具实现批量转化, 就像常说的那样, 很多事情做起来费劲, 多半使我们的方法不对. 类似这种体力活, 我们就需要换个思路. Inkscape介绍Inkscape是一套向量图形编辑器，以自由软件授权发布与使用。该软件的开发目标是成为一套强力的绘图软件，且能完全遵循与支持XM">
+<meta name="twitter:image" content="https://media.inkscape.org/media/cms_page_media/328/x11pref_input.png">
 
     
     <link rel="alternative" href="/atom.xml" title="罗宾的木屋" type="application/atom+xml">
@@ -75,87 +83,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2018/04/21/pdf-in-iOS/" title="在iOS中使用pdf文件" itemprop="url">在iOS中使用pdf文件</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Robin" target="_blank" itemprop="author">Robin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-04-21T11:57:17.000Z" itemprop="datePublished"> Published 2018-04-21</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>安卓上可以很方便的使用svg文件, 但是iOS就是比较苦逼了, 需要转换成png, 或者pdf才能使用.</p>
-<h2 id="Xcode使用pdf的原理"><a href="#Xcode使用pdf的原理" class="headerlink" title="Xcode使用pdf的原理"></a>Xcode使用pdf的原理</h2><p>Xcode在构建项目时会基于Asset Catalog中的PDF矢量图形自动创建@1x、@2x和@3x三种规格的PNG文件. 通常我们会将pdf在 Asset Catalog 中设置Scales属性设置为”Single Scale”</p>
-<p>注意:</p>
-<ul>
-<li>矢量图形的支持只是阶段性的 - 在构建阶段，Xcode会基于PDF生成PNG图片并输出到界面当中。</li>
-<li>一旦完成矢量图形的设置，你就无法为其指定新的输出尺寸了。如果需要更大的规格，则需要创建新的PDF图形，否则在使用AutoLayout时原来的图片会失真。<br>正如前面所说的，iOS 8只能支持基于PDF生成的PNG文件；但OS X却可以真正完整的支持矢量图形，你可以直接通过Auto Layout或代码来缩放矢量图形，不会产生任何失真。</li>
-<li>使用pdf后, 图片显示的大小不一定是按照设计图的大小来显示, 很多情况下需要对图片控件的大小进行修正</li>
-<li>对于UIImageView, UIButton等空间, 我们可以通过置imageEdgeInsets来实际控制图片的显示大小</li>
-<li>对于UITabBarItem这个控件, 系统似乎并没有提供相关api修改图片大小, 这种情况, 只能使用png<h2 id="为什么Xcode不支持svg"><a href="#为什么Xcode不支持svg" class="headerlink" title="为什么Xcode不支持svg:"></a>为什么Xcode不支持svg:</h2></li>
-<li><p>Why PDF instead of SVG or other formats</p>
-</li>
-<li><p>For SVG and other formats, the vector image has no actual size info, while PDF has size info. I think what Xcode 6 does is using the size info in PDF as actual display size, then generate 2x 3x files from the vector image.</p>
-</li>
-</ul>
-<p>因为svg产生的image对象是矢量的, 没有size信息, 而Xcode需要依据pdf的size属性, 将矢量图片转为2x, 3x显示所需要的图形文件</p>
-<p><a href="https://www.jianshu.com/p/e4fe82ca6fd0" target="_blank" rel="noopener">参考</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/小技巧/">小技巧</a>
-</div>
-
-
-  <div class="article-tags">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
-  <span></span> <a href="/tags/iOS/">iOS</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2018/04/21/SVG2PDF/" title="svg批量转化为pdf" itemprop="url">svg批量转化为pdf</a>
@@ -169,9 +100,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p>程序员都是比较懒的人, 至少我是这样, 把一个svg转成pdf, 我可以在网上找找在线转化, 三个以上, 我就不伺候了, 就要找工具实现批量转化, 就像常说的那样, 很多事情做起来费劲, 多半使我们的方法不对. 类似这种体力活, 我们就需要换个思路.</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Inkscape介绍"><span class="toc-number">1.</span> <span class="toc-text">Inkscape介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Inkscape-安装"><span class="toc-number">1.1.</span> <span class="toc-text">Inkscape 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-下载安装-0-91"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 下载安装(0.91)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Homebrew-Inkscape-0-92-1"><span class="toc-number">1.2.</span> <span class="toc-text">Homebrew (Inkscape 0.92.1)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行脚本"><span class="toc-number">2.</span> <span class="toc-text">执行脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">2.1.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>程序员都是比较懒的人, 至少我是这样, 把一个svg转成pdf, 我可以在网上找找在线转化, 三个以上, 我就不伺候了, 就要找工具实现批量转化, 就像常说的那样, 很多事情做起来费劲, 多半使我们的方法不对. 类似这种体力活, 我们就需要换个思路.</p>
 <h2 id="Inkscape介绍"><a href="#Inkscape介绍" class="headerlink" title="Inkscape介绍"></a><a href="https://zh.wikipedia.org/wiki/Inkscape" target="_blank" rel="noopener">Inkscape介绍</a></h2><p><a href="https://inkscape.org/zh/download/mac-os/" target="_blank" rel="noopener">Inkscape</a>是一套向量图形编辑器，以自由软件授权发布与使用。该软件的开发目标是成为一套强力的绘图软件，且能完全遵循与支持XML、SVG及CSS等开放性的标准格式。Inkscape是一套跨平台性的应用程序，Windows、Mac OS X、Linux及类UNIX版等操作系统。</p>
 <h3 id="Inkscape-安装"><a href="#Inkscape-安装" class="headerlink" title="Inkscape 安装"></a>Inkscape 安装</h3><h4 id="1-下载安装-0-91"><a href="#1-下载安装-0-91" class="headerlink" title="1. 下载安装(0.91)"></a>1. 下载安装(0.91)</h4><blockquote>
 <p>务必按照以下安装步骤,  依赖于XQuartz, 需要首先安装XQuartz<br>下载</p>
@@ -212,14 +150,9 @@
 </ol>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>生成png的脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">mkdir &quot;$PWD&quot;/png</span><br><span class="line">for file in $PWD/*.svg</span><br><span class="line">do</span><br><span class="line">filename=$(basename &quot;$file&quot;)</span><br><span class="line">inkscape &quot;$file&quot; -d 1200 --export-png=&quot;$PWD&quot;/png/&quot;$&#123;filename%.svg&#125;.png&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
 <p>其他操作类似</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -237,24 +170,45 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://yoursite.com/2018/04/21/SVG2PDF/" data-title="svg批量转化为pdf | 罗宾的木屋" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/04/21/pdf-in-iOS/" title="在iOS中使用pdf文件">
+  <strong>上一篇：</strong><br/>
+  <span>
+  在iOS中使用pdf文件</span>
+</a>
 </div>
+
+
+</nav>
+
+	
+
+
+
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Inkscape介绍"><span class="toc-number">1.</span> <span class="toc-text">Inkscape介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Inkscape-安装"><span class="toc-number">1.1.</span> <span class="toc-text">Inkscape 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-下载安装-0-91"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 下载安装(0.91)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Homebrew-Inkscape-0-92-1"><span class="toc-number">1.2.</span> <span class="toc-text">Homebrew (Inkscape 0.92.1)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行脚本"><span class="toc-number">2.</span> <span class="toc-text">执行脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">2.1.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -411,12 +365,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -489,4 +520,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>

@@ -4,20 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>罗宾的木屋</title>
+    <title>在iOS中使用pdf文件 | 罗宾的木屋</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Robin">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="罗宾的木屋">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="安卓上可以很方便的使用svg文件, 但是iOS就是比较苦逼了, 需要转换成png, 或者pdf才能使用. Xcode使用pdf的原理Xcode在构建项目时会基于Asset Catalog中的PDF矢量图形自动创建@1x、@2x和@3x三种规格的PNG文件. 通常我们会将pdf在 Asset Catalog 中设置Scales属性设置为”Single Scale” 注意:  矢量图形的支持只是阶段性">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在iOS中使用pdf文件">
+<meta property="og:url" content="http://yoursite.com/2018/04/21/pdf-in-iOS/index.html">
 <meta property="og:site_name" content="罗宾的木屋">
+<meta property="og:description" content="安卓上可以很方便的使用svg文件, 但是iOS就是比较苦逼了, 需要转换成png, 或者pdf才能使用. Xcode使用pdf的原理Xcode在构建项目时会基于Asset Catalog中的PDF矢量图形自动创建@1x、@2x和@3x三种规格的PNG文件. 通常我们会将pdf在 Asset Catalog 中设置Scales属性设置为”Single Scale” 注意:  矢量图形的支持只是阶段性">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-21T12:43:35.563Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="罗宾的木屋">
+<meta name="twitter:title" content="在iOS中使用pdf文件">
+<meta name="twitter:description" content="安卓上可以很方便的使用svg文件, 但是iOS就是比较苦逼了, 需要转换成png, 或者pdf才能使用. Xcode使用pdf的原理Xcode在构建项目时会基于Asset Catalog中的PDF矢量图形自动创建@1x、@2x和@3x三种规格的PNG文件. 通常我们会将pdf在 Asset Catalog 中设置Scales属性设置为”Single Scale” 注意:  矢量图形的支持只是阶段性">
 
     
     <link rel="alternative" href="/atom.xml" title="罗宾的木屋" type="application/atom+xml">
@@ -75,12 +80,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2018/04/21/pdf-in-iOS/" title="在iOS中使用pdf文件" itemprop="url">在iOS中使用pdf文件</a>
@@ -94,9 +97,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p>安卓上可以很方便的使用svg文件, 但是iOS就是比较苦逼了, 需要转换成png, 或者pdf才能使用.</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Xcode使用pdf的原理"><span class="toc-number">1.</span> <span class="toc-text">Xcode使用pdf的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么Xcode不支持svg"><span class="toc-number">2.</span> <span class="toc-text">为什么Xcode不支持svg:</span></a></li></ol>
+		
+		</div>
+		
+		<p>安卓上可以很方便的使用svg文件, 但是iOS就是比较苦逼了, 需要转换成png, 或者pdf才能使用.</p>
 <h2 id="Xcode使用pdf的原理"><a href="#Xcode使用pdf的原理" class="headerlink" title="Xcode使用pdf的原理"></a>Xcode使用pdf的原理</h2><p>Xcode在构建项目时会基于Asset Catalog中的PDF矢量图形自动创建@1x、@2x和@3x三种规格的PNG文件. 通常我们会将pdf在 Asset Catalog 中设置Scales属性设置为”Single Scale”</p>
 <p>注意:</p>
 <ul>
@@ -112,14 +122,9 @@
 </ul>
 <p>因为svg产生的image对象是矢量的, 没有size信息, 而Xcode需要依据pdf的size属性, 将矢量图片转为2x, 3x显示所需要的图形文件</p>
 <p><a href="https://www.jianshu.com/p/e4fe82ca6fd0" target="_blank" rel="noopener">参考</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -137,124 +142,45 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://yoursite.com/2018/04/21/pdf-in-iOS/" data-title="在iOS中使用pdf文件 | 罗宾的木屋" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2018/04/21/SVG2PDF/" title="svg批量转化为pdf" itemprop="url">svg批量转化为pdf</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Robin" target="_blank" itemprop="author">Robin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-04-21T11:54:00.000Z" itemprop="datePublished"> Published 2018-04-21</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>程序员都是比较懒的人, 至少我是这样, 把一个svg转成pdf, 我可以在网上找找在线转化, 三个以上, 我就不伺候了, 就要找工具实现批量转化, 就像常说的那样, 很多事情做起来费劲, 多半使我们的方法不对. 类似这种体力活, 我们就需要换个思路.</p>
-<h2 id="Inkscape介绍"><a href="#Inkscape介绍" class="headerlink" title="Inkscape介绍"></a><a href="https://zh.wikipedia.org/wiki/Inkscape" target="_blank" rel="noopener">Inkscape介绍</a></h2><p><a href="https://inkscape.org/zh/download/mac-os/" target="_blank" rel="noopener">Inkscape</a>是一套向量图形编辑器，以自由软件授权发布与使用。该软件的开发目标是成为一套强力的绘图软件，且能完全遵循与支持XML、SVG及CSS等开放性的标准格式。Inkscape是一套跨平台性的应用程序，Windows、Mac OS X、Linux及类UNIX版等操作系统。</p>
-<h3 id="Inkscape-安装"><a href="#Inkscape-安装" class="headerlink" title="Inkscape 安装"></a>Inkscape 安装</h3><h4 id="1-下载安装-0-91"><a href="#1-下载安装-0-91" class="headerlink" title="1. 下载安装(0.91)"></a>1. 下载安装(0.91)</h4><blockquote>
-<p>务必按照以下安装步骤,  依赖于XQuartz, 需要首先安装XQuartz<br>下载</p>
-</blockquote>
-<ol>
-<li>下载安装<a href="http://xquartz.macosforge.org/" target="_blank" rel="noopener">XQuartz</a></li>
-<li>重启电脑或者登出完成 XQuartz 安装过程</li>
-<li>下载<a href="https://inkscape.org/en/gallery/item/3896/Inkscape-0.91-1-x11-10.7-x86_64.dmg" target="_blank" rel="noopener">Inkscape.dmg</a>, 打开dmg文件, 并将Inkscape添加到Applications文件夹</li>
-<li>运行Inkscape. 将会弹出一个提示框, 询问X11的安装目录. 请将其指向XQuartz在您Applications文件夹下的安装路径</li>
-<li>打开X11 &gt; Preferences, 配置input 和 pasteboard :</li>
-</ol>
-<p><img src="https://media.inkscape.org/media/cms_page_media/328/x11pref_input.png" alt=""><br><img src="https://media.inkscape.org/media/cms_page_media/328/x11pref_pasteboard.png" alt=""></p>
-<h3 id="Homebrew-Inkscape-0-92-1"><a href="#Homebrew-Inkscape-0-92-1" class="headerlink" title="Homebrew (Inkscape 0.92.1)"></a>Homebrew (Inkscape 0.92.1)</h3><p>确定电脑中已安装Homebrew, 在命令窗口中执行</p>
-<blockquote>
-<p>brew install caskformula/caskformula/inkscape</p>
-</blockquote>
-<p>如果过之前有用brew安装过其他版本的Inkscape, 请先执行以下命令</p>
-<blockquote>
-<p>brew uninstall inkscape<br>brew cleanup</p>
-</blockquote>
-<h2 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h2><ol>
-<li>创建一个文件 , convertSVGtoPDF.sh</li>
-<li><p>添加以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">mkdir &quot;$PWD&quot;/pdf</span><br><span class="line">for file in $PWD/*.svg</span><br><span class="line">do</span><br><span class="line">filename=$(basename &quot;$file&quot;)</span><br><span class="line">inkscape &quot;$file&quot; -d 1200 -A &quot;$PWD&quot;/pdf/&quot;$&#123;filename%.svg&#125;.pdf&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行</p>
-<blockquote>
-<p>chmod +x convertSVGtoPDF.sh</p>
-</blockquote>
-</li>
-<li><p>然后将convertSVGtoPDF.sh 放在要转化的svg文件夹根目录, 在命令行中执行</p>
-<blockquote>
-<p>./convertSVGtoPDF.sh</p>
-</blockquote>
-</li>
-<li><p>生成的pdf就在pdf文件夹下</p>
-</li>
-</ol>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>生成png的脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">mkdir &quot;$PWD&quot;/png</span><br><span class="line">for file in $PWD/*.svg</span><br><span class="line">do</span><br><span class="line">filename=$(basename &quot;$file&quot;)</span><br><span class="line">inkscape &quot;$file&quot; -d 1200 --export-png=&quot;$PWD&quot;/png/&quot;$&#123;filename%.svg&#125;.png&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
-<p>其他操作类似</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/小技巧/">小技巧</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/svg-iOS/">svg, iOS</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/04/21/SVG2PDF/"  title="svg批量转化为pdf">
+ <strong>下一篇：</strong><br/> 
+ <span>svg批量转化为pdf
+</span>
+</a>
 </div>
 
-</footer>
+</nav>
 
-
-    </article>
-
-
+	
 
 
 
-
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Xcode使用pdf的原理"><span class="toc-number">1.</span> <span class="toc-text">Xcode使用pdf的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么Xcode不支持svg"><span class="toc-number">2.</span> <span class="toc-text">为什么Xcode不支持svg:</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -411,12 +337,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -489,4 +492,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
