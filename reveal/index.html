@@ -1,0 +1,1138 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title>  · 罗宾的木屋</title><meta name="description" content=" - Robin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="罗宾的木屋"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="/categories/Algorithms" target="_self" class="nav-list-link">算法</a></li><li class="nav-list-item"><a href="/categories/Technique" target="_self" class="nav-list-link">技巧</a></li><li class="nav-list-item"><a href="/tags/" target="_self" class="nav-list-link">TAGS</a></li><li class="nav-list-item"><a href="https://github.com/robin2013" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title"></h1><div class="post-info">Apr 23, 2018</div><div class="post-content"><!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>ES6</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+	  <link rel="stylesheet" href="css/tomorrow-night-eighties.min.css">
+	  <link rel="stylesheet" href="css/perfect-scrollbar.min.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<style>
+		      #top_btn{display: block;position: fixed;left: 50px;top: 30px;width: 40px;height: 40px;background: url(images/home.png) no-repeat center;background-size: contain;z-index: 999;cursor: pointer;}
+		      .tcenter{text-align: center !important;}
+		      .reveal li{text-align: left;font-size: 80%;color: #dadada;}
+					.reveal p{text-align: left;font-size: 80%;color: #dadada;}
+		      .linkTitle{float: left;width: calc(100% / 2);}
+		      .reveal h2{text-transform: none;}
+		      .reveal h4{font-size: 90%;text-align: left;text-transform: none;}
+		      .hljs.more{position: relative;}
+		    </style>
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<a href="#/s3" id="top_btn"></a>
+		<div class="reveal">
+			<div class="slides">
+				<section id="s0">
+					<h2>ECMAScript 6语法概览</h2><br>
+      		<p class="tcenter">作者：崔银江</p>
+				</section>
+				<section id="s1">
+					<h4>ECMAScript 和 JavaScript 的关系</h4>
+					<p class="fragment">996 年 11 月，JavaScript 的创造者 Netscape 公司，决定将 JavaScript 提交给国际标准化组织 ECMA，希望这种语言能够成为国际标准。次年，ECMA 发布 262 号标准文件（ECMA-262）的第一版.</p>
+				  <p class="fragment">该标准从一开始就是针对 JavaScript 语言制定的，但是之所以不叫 JavaScript，有两个原因。一是商标，Java 是 Sun 公司的商标，根据授权协议，只有 Netscape 公司可以合法地使用 JavaScript 这个名字，且 JavaScript 本身也已经被 Netscape 公司注册为商标。二是想体现这门语言的制定者是 ECMA，不是 Netscape，这样有利于保证这门语言的开放性和中立性。</p>
+					<p class="fragment">ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现</p>
+				</section>
+				<section class="s2">
+					<h4>ES6 与 ES5</h4>
+					<p>各大浏览器的最新版本，对 ES6 的支持可以查看<a href="http://kangax.github.io/es5-compat-table/es6/" target="_blank">支持度</a>。且随着时间的推移，支持度已经越来越高了，超过90%的 ES6 语法特性都实现了。</p>
+		 <p>Babel 是一个广泛使用的 ES6 转码器，可以将 ES6 代码转为 ES5 代码，从而在现有环境执行。这意味着，你可以用 ES6 的方式编写程序，又不用担心现有环境是否支持。下面是一个例子。</p>
+		 <pre><code data-trim="">
+ // 转码前
+ input.map(item => item + 1);
+
+ // 转码后
+ input.map(function (item) {
+	 return item + 1;
+ });
+		 </code></pre>
+		 <p>上面的原始代码用了箭头函数，Babel 将其转为普通函数，就能在不支持箭头函数的 JavaScript 环境执行了。</p>
+				</section>
+				<!-- 目录 -->
+				<section id="s3">
+					<h2>目录</h2>
+					<a class="linkTitle" href="#/let-const">1.let和const</a>
+					<a class="linkTitle" href="#/symbol">2.Symbol</a>
+					<a class="linkTitle" href="#/s9">3.解构</a>
+					<a class="linkTitle" href="#/generator">4.generator</a>
+					<a class="linkTitle" href="#/s32">5.数组</a>
+					<a class="linkTitle" href="#/s37">6.函数</a>
+					<a class="linkTitle" href="#/s49">7.Class</a>
+					<a class="linkTitle" href="#/s56">8.模块</a>
+			 </section>
+
+			 <!-- let -->
+			 <section id="let-const">
+			 	<section id="lc-1">
+					<h2>1.let和const</h2>
+	        <p>ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效</p>
+	        <pre><code data-trim="">
+						{
+						  let a = 10;
+						  var b = 1;
+						}
+
+						a // ReferenceError: a is not defined.
+						b // 1
+	        </code></pre>
+	        <p>上面代码在代码块之中，分别用let和var声明了两个变量。然后在代码块之外调用这两个变量，结果let声明的变量报错，var声明的变量返回了正确的值。这表明，let声明的变量只在它所在的代码块有效。</p>
+
+			 	</section>
+				<section id="s5">
+	        <p>var命令会发生”变量提升“现象，即变量可以在声明之前使用，值为undefined。</p>
+					<p>为了纠正这种现象，let命令改变了语法行为，它所声明的变量一定要在声明后使用，否则报错</p>
+	        <pre><code data-trim="">
+						// var 的情况
+						console.log(foo); // 输出undefined
+						var foo = 2;
+
+						// let 的情况
+						console.log(bar); // 报错ReferenceError
+						let bar = 2;
+	        </code></pre>
+	        <p>变量foo用var命令声明，会发生变量提升，即脚本开始运行时，变量foo已经存在了，但是没有值，所以会输出undefined。变量bar用let命令声明，不会发生变量提升。这表示在声明它之前，变量bar是不存在的，这时如果用到它，就会抛出一个错误。</p>
+	        <p>所以，建议不再使用var命令，而是使用let命令取代。</p>
+	      </section>
+				<section>
+					<h4>暂时性死区</h4>
+					<p>只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。</p>
+					<pre><code data-trim="">
+						var tmp = 123;
+
+					if (true) {
+					  tmp = 'abc'; // ReferenceError
+					  let tmp;
+					}
+					</code></pre>
+					<p>上面代码中，存在全局变量tmp，但是块级作用域内let又声明了一个局部变量tmp，导致后者绑定这个块级作用域，所以在let声明变量前，对tmp赋值会报错</p>
+					<p>ES6 明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错</p>
+				</section>
+	      <section id="s6">
+	        <p>在let和const之间，建议优先使用const，尤其是在全局环境，不应该设置变量，只应设置常量。</p>
+	        <p>const优于let有几个原因。一个是const可以提醒阅读程序的人，这个变量不应该改变；另一个是const比较符合函数式编程思想，运算不改变值，只是新建值，而且这样也有利于将来的分布式运算；最后一个原因是 JavaScript 编译器会对const进行优化，所以多使用const，有利于提供程序的运行效率，也就是说let和const的本质区别，其实是编译器内部的处理不同。</p>
+	        <pre><code data-trim="">
+					  // bad
+					  let a = 1, b = 2, c = 3;
+					  // good
+					  const a = 1;
+					  const b = 2;
+					  const c = 3;
+					  // best
+					  const [a, b, c] = [1, 2, 3];
+	        </code></pre>
+	      </section>
+	    </section>
+			<!-- symbol -->
+			<section id="symbol">
+			<section id="s1">
+				<h2>概述</h2>
+				<p>ES5 的对象属性名都是字符串，这容易造成属性名的冲突。比如，你使用了一个他人提供的对象，但又想为这个对象添加新的方法（mixin 模式），新方法的名字就有可能与现有方法产生冲突。如果有一种机制，保证每个属性的名字都是独一无二的就好了，这样就从根本上防止属性名的冲突。这就是 ES6 引入Symbol的原因。</p>
+				<p>ES6 引入了一种新的原始数据类型Symbol，表示独一无二的值。它是 JavaScript 语言的第七种数据类型，前六种是：undefined、null、布尔值（Boolean）、字符串（String）、数值（Number）、对象（Object）</p>
+			</section>
+			<section id="s2">
+				<h2>Symbol 的使用</h2>
+				<p>Symbol() 构造方法创建</p>
+				<p>Symbol.for() 全局注册创建</p>
+				<aside class="notes">
+						<p>Symbol一般有两种构造方式,一种是使用构造方法生成,一种是全局注册的方式创建</p>
+				</aside>
+			</section>
+			<section id="s3">
+				<h2>Symbol()</h2>
+				<p>Symbol函数前不能使用new命令</p>
+				<pre><code data-trim="">
+						let s = Symbol();
+
+						typeof s
+						// "symbol"
+				</code></pre>
+				<aside class="notes">
+					<p>上面代码中，变量s就是一个独一无二的值。typeof运算符的结果，表明变量s是 Symbol 数据类型，而不是字符串之类的其他类型。</p>
+					<p>注意，Symbol函数前不能使用new命令，否则会报错。这是因为生成的 Symbol 是一个原始类型的值，不是对象。也就是说，由于 Symbol 值不是对象，所以不能添加属性。基本上，它是一种类似于字符串的数据类型。</p>
+				</aside>
+			</section>
+			<section>
+				<p>Symbol函数可以接受一个字符串作为参数，表示对 Symbol 实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分。</p>
+				<pre><code data-trim="">
+						let s1 = Symbol('foo');
+						let s2 = Symbol('bar');
+
+						s1 // Symbol(foo)
+						s2 // Symbol(bar)
+
+						s1.toString() // "Symbol(foo)"
+						s2.toString() // "Symbol(bar)"
+				</code></pre>
+				<aside class="notes">
+					<p>上面代码中，s1和s2是两个 Symbol 值。如果不加参数，它们在控制台的输出都是Symbol()，不利于区分。有了参数以后，就等于为它们加上了描述，输出的时候就能够分清，到底是哪一个值。</p>
+				</aside>
+			</section>
+			<section>
+				<p>Symbol 的参数是一个对象，就会调用该对象的toString方法，将其转为字符串，然后才生成一个 Symbol 值</p>
+				<pre><code data-trim="">
+						const obj = {
+							toString() {
+								return 'abc';
+							}
+						};
+						const sym = Symbol(obj);
+						sym // Symbol(abc)
+				</code></pre>
+				<aside class="notes">
+					<p>注意，Symbol函数的参数只是表示对当前 Symbol 值的描述，因此相同参数的Symbol函数的返回值是不相等的。</p>
+				</aside>
+			</section>
+			<section>
+				<p>Symbol函数的返回值是不相等的</p>
+				<pre><code data-trim="">
+						// 没有参数的情况
+						let s1 = Symbol();
+						let s2 = Symbol();
+
+						s1 === s2 // false
+
+						// 有参数的情况
+						let s1 = Symbol('foo');
+						let s2 = Symbol('foo');
+
+						s1 === s2 // false
+				</code></pre>
+				<aside class="notes">
+					<p>上面代码中，s1和s2都是Symbol函数的返回值，而且参数相同，但是它们是不相等的。</p>
+				</aside>
+			</section>
+			<section>
+				<p>Symbol 值不能与其他类型的值进行运算，会报错。</p>
+				<pre>
+					<code data-trim="">
+							let sym = Symbol('My symbol');
+
+							"your symbol is " + sym
+							// TypeError: can't convert symbol to string
+							`your symbol is ${sym}`
+							// TypeError: can't convert symbol to string
+					</code>
+				</pre>
+			</section>
+			<section>
+				<p>Symbol 值可以显式转为字符串</p>
+				<pre>
+						<code data-trim="">
+								let sym = Symbol('My symbol');
+
+								String(sym) // 'Symbol(My symbol)'
+								sym.toString() // 'Symbol(My symbol)'
+						</code>
+					</pre>
+			</section>
+			<section>
+					<p>Symbol 值也可以转为布尔值，但是不能转为数值</p>
+				<pre>
+						<code data-trim="">
+								let sym = Symbol();
+								Boolean(sym) // true
+								!sym  // false
+
+								if (sym) {
+									// ...
+								}
+
+								Number(sym) // TypeError
+								sym + 2 // TypeError
+						</code>
+					</pre>
+			</section>
+			<section>
+				<h2>作为属性名的 Symbol </h2>
+				<p>由于每一个 Symbol 值都是不相等的，这意味着 Symbol 值可以作为标识符，用于对象的属性名，就能保证不会出现同名的属性。</p>
+				<pre>
+						<code data-trim="">
+								let mySymbol = Symbol();
+
+								// 第一种写法
+								let a = {};
+								a[mySymbol] = 'Hello!';
+
+								// 第二种写法
+								let a = {
+									[mySymbol]: 'Hello!'
+								};
+
+								// 第三种写法
+								let a = {};
+								Object.defineProperty(a, mySymbol, { value: 'Hello!' });
+
+								// 以上写法都得到同样结果
+								a[mySymbol] // "Hello!"
+						</code>
+					</pre>
+					<aside class="notes">
+						<p>上面代码通过方括号结构和Object.defineProperty，将对象的属性名指定为一个 Symbol 值。</p>
+					</aside>
+			</section>
+			<section>
+				<h4>注意事项</h4>
+				<p>1. Symbol 值作为对象属性名时，不能用点运算符</p>
+				<pre>
+					<code data-trim="">
+							const mySymbol = Symbol();
+							const a = {};
+
+							a.mySymbol = 'Hello!';
+							a[mySymbol] // undefined
+							a['mySymbol'] // "Hello!"
+					</code>
+				</pre>
+				<aside class="notes">
+						<p>上面代码中，因为点运算符后面总是字符串，所以不会读取mySymbol作为标识名所指代的那个值，导致a的属性名实际上是一个字符串，而不是一个 Symbol 值。</p>
+					</aside>
+			</section>
+			<section>
+					<h4>注意事项</h4>
+					<p>2. 在对象的内部，使用 Symbol 值定义属性时，Symbol 值必须放在方括号之中</p>
+					<pre>
+						<code data-trim="">
+								let s = Symbol();
+
+								let obj = {
+									[s]: function (arg) { ... }
+								};
+
+								obj[s](123);
+						</code>
+					</pre>
+					<aside class="notes">
+							<p>上面代码中，如果s不放在方括号中，该属性的键名就是字符串s，而不是s所代表的那个 Symbol 值。</p>
+						</aside>
+				</section>
+				<section>
+					<h4>Symbol 定义常量</h4>
+					<p>Symbol 类型还可以用于定义一组常量，保证这组常量的值都是不相等的。</p>
+					<pre>
+							<code data-trim="">
+									const COLOR_RED    = Symbol();
+									const COLOR_GREEN  = Symbol();
+
+									function getComplement(color) {
+										switch (color) {
+											case COLOR_RED:
+												return COLOR_GREEN;
+											case COLOR_GREEN:
+												return COLOR_RED;
+											default:
+												throw new Error('Undefined color');
+											}
+									}
+							</code>
+						</pre>
+						<aside class="notes">
+							<p>常量使用 Symbol 值最大的好处，就是其他任何值都不可能有相同的值了，因此可以保证上面的switch语句会按设计的方式工作。</p>
+
+						</aside>
+				</section>
+				<section>
+					<h4>消除魔术字符串</h4>
+					<p>魔术字符串指的是，在代码之中多次出现、与代码形成强耦合的某一个具体的字符串或者数值。风格良好的代码，应该尽量消除魔术字符串，改由含义清晰的变量代替。</p>
+					<pre>
+							<code data-trim="">
+									function getArea(shape, options) {
+										let area = 0;
+
+										switch (shape) {
+											case 'Triangle': // 魔术字符串
+												area = .5 * options.width * options.height;
+												break;
+											/* ... more code ... */
+										}
+
+										return area;
+									}
+
+									getArea('Triangle', { width: 100, height: 100 }); // 魔术字符串
+							</code>
+						</pre>
+						<aside class="notes">
+							<p>上面代码中，字符串Triangle就是一个魔术字符串。它多次出现，与代码形成“强耦合”，不利于将来的修改和维护。</p>
+						</aside>
+				</section>
+				<section>
+						<h4>改良写法</h4>
+						<p>常用的消除魔术字符串的方法，就是把它写成一个变量</p>
+						<pre>
+								<code data-trim="">
+										const shapeType = {
+											triangle: 'Triangle'
+										};
+
+										function getArea(shape, options) {
+											let area = 0;
+											switch (shape) {
+												case shapeType.triangle:
+													area = .5 * options.width * options.height;
+													break;
+											}
+											return area;
+										}
+
+										getArea(shapeType.triangle, { width: 100, height: 100 });
+								</code>
+							</pre>
+							<aside class="notes">
+								<p>上面代码中，我们把Triangle写成shapeType对象的triangle属性，这样就消除了强耦合。</p>
+							</aside>
+					</section>
+					<section>
+						<h4> Symbol 置换</h4>
+						<pre>
+								<code data-trim="">
+										const shapeType = {
+											triangle: Symbol()
+										};
+								</code>
+							</pre>
+							<aside class="notes">
+									<p>如果仔细分析，可以发现shapeType.triangle等于哪个值并不重要，只要确保不会跟其他shapeType属性的值冲突即可。因此，这里就很适合改用 Symbol 值。</p>
+									<p>上面代码中，除了将shapeType.triangle的值设为一个 Symbol，其他地方都不用修改</p>
+								</aside>
+					</section>
+					<section>
+						<h4>属性名遍历</h4>
+						<p>Symbol 作为属性名，该属性不会出现在for...in、for...of循环中，也不会被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回。</p>
+						<p>Object.getOwnPropertySymbols方法返回一个数组，成员是当前对象的所有用作属性名的 Symbol 值</p>
+						<pre>
+								<code data-trim="">
+										const obj = {};
+										let a = Symbol('a');
+										let b = Symbol('b');
+
+										obj[a] = 'Hello';
+										obj[b] = 'World';
+
+										const objectSymbols = Object.getOwnPropertySymbols(obj);
+
+										objectSymbols
+										// [Symbol(a), Symbol(b)]
+								</code>
+							</pre>
+							<aside class="notes">
+									<p>但是，它也不是私有属性，有一个Object.getOwnPropertySymbols方法，可以获取指定对象的所有 Symbol 属性名</p>
+								</aside>
+					</section>
+					<section>
+						<h4>隐藏属性</h4>
+						<p>由于以 Symbol 值作为名称的属性，不会被常规方法遍历得到。我们可以利用这个特性，为对象定义一些非私有的、但又希望只用于内部的方法</p>
+						<pre>
+							<code data-trim="">
+									let size = Symbol('size');
+
+									class Collection {
+										constructor() {
+											this[size] = 0;
+										}
+
+										add(item) {
+											this[this[size]] = item;
+											this[size]++;
+										}
+
+										static sizeOf(instance) {
+											return instance[size];
+										}
+									}
+
+									let x = new Collection();
+									Collection.sizeOf(x) // 0
+
+									x.add('foo');
+									Collection.sizeOf(x) // 1
+
+									Object.keys(x) // ['0']
+									Object.getOwnPropertyNames(x) // ['0']
+									Object.getOwnPropertySymbols(x) // [Symbol(size)]
+							</code>
+						</pre>
+						<aside class="notes">
+							<p>上面代码中，对象x的size属性是一个 Symbol 值，所以Object.keys(x)、Object.getOwnPropertyNames(x)都无法获取它。这就造成了一种非私有的内部方法的效果</p>
+						</aside>
+					</section>
+					<section>
+						<h4>Symbol.for()</h4>
+						<p>Symbol.for()重新使用同一个 Symbol 值</p>
+						<pre>
+							<code data-trim="">
+									let s1 = Symbol.for('foo');
+									let s2 = Symbol.for('foo');
+
+									s1 === s2 // true
+							</code>
+						</pre>
+						<aside class="notes">
+							<p>有时，我们希望重新使用同一个 Symbol 值，Symbol.for方法可以做到这一点。它接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值。如果有，就返回这个 Symbol 值，否则就新建并返回一个以该字符串为名称的 Symbol 值。</p>
+						</aside>
+					</section>
+					<section>
+						<h4>Symbol.for()与Symbol()的差异</h4>
+						<p>Symbol()每次新建一个值</p>
+						<p>Symbol.for()先检查给定的key是否已经存在，如果不存在才会新建一个值</p>
+						<pre>
+								<code data-trim="">
+										Symbol.for("bar") === Symbol.for("bar")
+										// true
+
+										Symbol("bar") === Symbol("bar")
+										// false
+								</code>
+							</pre>
+						<aside class="notes">
+							<p>上面代码中，由于Symbol()写法没有登记机制，所以每次调用都会返回一个不同的值。</p>
+						</aside>
+					</section>
+					<section>
+						<p>Symbol.keyFor方法返回一个已登记的 Symbol 类型值的key</p>
+						<pre>
+								<code data-trim="">
+										let s1 = Symbol.for("foo");
+										Symbol.keyFor(s1) // "foo"
+
+										let s2 = Symbol("foo");
+										Symbol.keyFor(s2) // undefined
+								</code>
+							</pre>
+						<aside class="notes">
+							<p>上面代码中，变量s2属于未登记的 Symbol 值，所以返回undefined。</p>
+						</aside>
+					</section>
+					<section>
+						<p>Symbol.for为 Symbol 值登记的名字，是全局环境的，可以在不同的 iframe 或 service worker 中取到同一个值</p>
+						<pre>
+								<code data-trim="">
+										iframe = document.createElement('iframe');
+										iframe.src = String(window.location);
+										document.body.appendChild(iframe);
+
+										iframe.contentWindow.Symbol.for('foo') === Symbol.for('foo')
+										// true
+								</code>
+							</pre>
+							<aside class="notes">
+									<p>上面代码中，iframe 窗口生成的 Symbol 值，可以在主页面得到</p>
+							</aside>
+					</section>
+					<section>
+						<h4>Singleton 模式</h4>
+						<p>Singleton 模式指的是调用一个类，任何时候返回的都是同一个实例。</p>
+						<p>很容易想到，可以把实例放到顶层对象global</p>
+						<pre>
+							<code data-trim="">
+									// mod.js
+									function A() {
+										this.foo = 'hello';
+									}
+
+									if (!global._foo) {
+										global._foo = new A();
+									}
+
+									module.exports = global._foo;
+							</code>
+						</pre>
+						<p>然后，加载上面的mod.js。</p>
+						<pre>
+								<code data-trim="">
+										const a = require('./mod.js');
+										console.log(a.foo);
+								</code>
+							</pre>
+							<aside class="notes">
+								<p>上面代码中，变量a任何时候加载的都是A的同一个实例。但是，这里有一个问题，全局变量global._foo是可写的，任何文件都可以修改。</p>
+							</aside>
+					</section>
+					<section>
+						<h4>Symbol防篡改</h4>
+						<p>使用Symbol方法生成，那么外部将无法引用这个值，当然也就无法改写</p>
+						<pre>
+								<code data-trim="">
+										// mod.js
+										const FOO_KEY = Symbol('foo');
+
+										function A() {
+											this.foo = 'hello';
+										}
+
+										if (!global[FOO_KEY]) {
+											global[FOO_KEY] = new A();
+										}
+
+										module.exports = global[FOO_KEY];
+								</code>
+							</pre>
+							<aside class="notes">
+								<p>上面代码将导致其他脚本都无法引用FOO_KEY。但这样也有一个问题，就是如果多次执行这个脚本，每次得到的FOO_KEY都是不一样的。虽然 Node 会将脚本的执行结果缓存，一般情况下，不会多次执行同一个脚本，但是用户可以手动清除缓存，所以也不是完全可靠。</p>
+							</aside>
+					</section>
+			</section>
+			<!-- Generator 函数的语法 -->
+			<section id="generator">
+				<section>
+					<h2>什么是Generator</h2>
+					<p class="fragment">1. Generator 函数是一个状态机</p>
+					<aside class="notes">
+						Generator 函数有多种理解角度。语法上，首先可以把它理解成，Generator 函数是一个状态机，封装了多个内部状态。
+					</aside>
+ 					<p class="fragment">2. 遍历器对象生成函数</p>
+					<aside class="notes">
+						执行 Generator 函数会返回一个遍历器对象，也就是说，Generator 函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历 Generator 函数内部的每一个状态。
+					</aside>
+					<pre class="fragment"><code data-trim="">
+						function* helloWorldGenerator() {
+							 yield 'hello';
+							 yield 'world';
+							 return 'ending';
+						 }
+
+						 var hw = helloWorldGenerator();
+				 </code></pre>
+					<h4 class="fragment">特征</h4>
+					<ul class="fragment">
+						<li>function关键字与函数名之间有一个星号</li>
+						<li>函数体内部使用yield表达式，定义不同的内部状态</li>
+					</ul>
+
+				</section>
+				<section>
+					<h2>函数调用</h2>
+					<p>调用遍历器对象的next方法，使得指针移向下一个状态。</p>
+					<pre><code data-trim="">
+						hw.next()
+						// { value: 'hello', done: false }
+
+						hw.next()
+						// { value: 'world', done: false }
+
+						hw.next()
+						// { value: 'ending', done: true }
+
+						hw.next()
+						// { value: undefined, done: true }
+					</code></pre>
+					<p>每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个yield表达式（或return语句）为止</p>
+					<p>Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行。</p>
+					<aside class="notes">
+						<p>上面代码一共调用了四次next方法。
+
+						</p><p>第一次调用，Generator 函数开始执行，直到遇到第一个yield表达式为止。next方法返回一个对象，它的value属性就是当前yield表达式的值hello，done属性的值false，表示遍历还没有结束。</p>
+
+						<p>第二次调用，Generator 函数从上次yield表达式停下的地方，一直执行到下一个yield表达式。next方法返回的对象的value属性就是当前yield表达式的值world，done属性的值false，表示遍历还没有结束。</p>
+
+						<p>第三次调用，Generator 函数从上次yield表达式停下的地方，一直执行到return语句（如果没有return语句，就执行到函数结束）。next方法返回的对象的value属性，就是紧跟在return语句后面的表达式的值（如果没有return语句，则value属性的值为undefined），done属性的值true，表示遍历已经结束。</p>
+
+						<p>第四次调用，此时 Generator 函数已经运行完毕，next方法返回对象的value属性为undefined，done属性为true。以后再调用next方法，返回的都是这个值。</p>
+
+						<p>总结一下，调用 Generator 函数，返回一个遍历器对象，代表 Generator 函数的内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield表达式后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。</p>
+					</aside>
+				</section>
+				<section>
+					<h2>yield表达式</h2>
+					<ul>
+						<li class="fragment">遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。</li>
+						<li class="fragment">下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。</li>
+						<li class="fragment">如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。</li>
+						<li class="fragment">如果该函数没有return语句，则返回的对象的value属性值为undefined。</li>
+					</ul>
+					<h4 class="fragment">惰性求值</h4>
+					<pre class="fragment"><code data-trim="">
+					function* gen() {
+					  yield  123 + 456;
+					}
+					</code></pre>
+					<aside class="notes">
+						<p>yield表达式后面的表达式，只有当调用next方法、内部指针指向该语句时才会执行，因此等于为 JavaScript 提供了手动的“惰性求值”（Lazy Evaluation）的语法功能。</p>
+						<p>上面代码中，yield后面的表达式123 + 456，不会立即求值，只会在next方法将指针移到这一句时，才会求值。</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>next方法参数</h2>
+					<p>yield表达式本身没有返回值，或者说总是返回undefined</p>
+					<p>next方法可以带一个参数，该参数就会被当作上一个yield表达式的返回值。</p>
+					<pre class="fragment"><code data-trim="">
+						function* f() {
+						  for(var i = 0; true; i++) {
+						    var reset = yield i;
+						    if(reset) { i = -1; }
+						  }
+						}
+
+						var g = f();
+
+						g.next() // { value: 0, done: false }
+						g.next() // { value: 1, done: false }
+						g.next(true) // { value: 0, done: false }
+					</code></pre>
+				<aside class="notes">
+					上面代码先定义了一个可以无限运行的 Generator 函数f，如果next方法没有参数，每次运行到yield表达式，变量reset的值总是undefined。当next方法带一个参数true时，变量reset就被重置为这个参数（即true），因此i会等于-1，下一轮循环就会从-1开始递增。
+					<p>这个功能有很重要的语法意义。Generator 函数从暂停状态到恢复运行，它的上下文状态（context）是不变的。通过next方法的参数，就有办法在 Generator 函数开始运行之后，继续向函数体内部注入值。也就是说，可以在 Generator 函数运行的不同阶段，从外部向内部注入不同的值，从而调整函数行为</p>
+				</aside>
+				</section>
+				<section>
+					<h4>另一个例子</h4>
+					<pre class="fragment"><code data-trim="">
+						function* foo(x) {
+						  var y = 2 * (yield (x + 1));
+						  var z = yield (y / 3);
+						  return (x + y + z);
+						}
+
+						var a = foo(5);
+						a.next() // Object{value:6, done:false}
+						a.next() // Object{value:NaN, done:false}
+						a.next() // Object{value:NaN, done:true}
+
+						var b = foo(5);
+						b.next() // { value:6, done:false }
+						b.next(12) // { value:8, done:false }
+						b.next(13) // { value:42, done:true }
+					</code></pre>
+					<aside class="notes">
+						<p>上面代码中，第二次运行next方法的时候不带参数，导致 y 的值等于2 * undefined（即NaN），除以 3 以后还是NaN，因此返回对象的value属性也等于NaN。第三次运行Next方法的时候不带参数，所以z等于undefined，返回对象的value属性等于5 + NaN + undefined，即NaN。</p>
+						<p>如果向next方法提供参数，返回结果就完全不一样了。上面代码第一次调用b的next方法时，返回x+1的值6；第二次调用next方法，将上一次yield表达式的值设为12，因此y等于24，返回y / 3的值8；第三次调用next方法，将上一次yield表达式的值设为13，因此z等于13，这时x等于5，y等于24，所以return语句的值等于42。</p>
+						<p>注意，由于next方法的参数表示上一个yield表达式的返回值，所以在第一次使用next方法时，传递参数是无效的。V8 引擎直接忽略第一次使用next方法时的参数，只有从第二次使用next方法开始，参数才是有效的。从语义上讲，第一个next方法用来启动遍历器对象，所以不用带有参数。</p>
+					</aside>
+				</section>
+				<section>
+					<h4>遍历 Generator 函数</h4>
+					<p>for...of循环可以自动遍历 Generator 函数时生成的Iterator对象，且此时不再需要调用next方法。</p>
+					<pre class="fragment"><code data-trim="">
+						function *foo() {
+						  yield 1;
+						  yield 2;
+						  yield 3;
+						  yield 4;
+						  yield 5;
+						  return 6;
+						}
+
+						for (let v of foo()) {
+						  console.log(v);
+						}
+						// 1 2 3 4 5
+					</code></pre>
+					<aside class="notes">
+						<p>上面代码使用for...of循环，依次显示 5 个yield表达式的值。这里需要注意，一旦next方法的返回对象的done属性为true，for...of循环就会中止，且不包含该返回对象，所以上面代码的return语句返回的6，不包括在for...of循环之中</p>
+					</aside>
+				</section>
+				<section>
+					<h4>其他遍历方式</h4>
+					<p>扩展运算符（...）、解构赋值和Array.from</p>
+					<pre class="fragment"><code data-trim="">
+						function* numbers () {
+						  yield 1
+						  yield 2
+						  return 3
+						  yield 4
+						}
+
+						// 扩展运算符
+						[...numbers()] // [1, 2]
+
+						// Array.from 方法
+						Array.from(numbers()) // [1, 2]
+
+						// 解构赋值
+						let [x, y] = numbers();
+						x // 1
+						y // 2
+
+						// for...of 循环
+						for (let n of numbers()) {
+						  console.log(n)
+						}
+						// 1
+						// 2
+					</code></pre>
+					<aside class="notes">
+						<p>除了for...of循环以外，扩展运算符（...）、解构赋值和Array.from方法内部调用的，都是遍历器接口。这意味着，它们都可以将 Generator 函数返回的 Iterator 对象，作为参数。</p>
+					</aside>
+				</section>
+				<section>
+					<h2>终结遍历 Generator 函数</h2>
+					<p>Generator.prototype.return()</p>
+					<pre class="fragment"><code data-trim="">
+						function* gen() {
+						  yield 1;
+						  yield 2;
+						  yield 3;
+						}
+
+						var g = gen();
+
+						g.next()        // { value: 1, done: false }
+						g.return('foo') // { value: "foo", done: true }
+						g.next()        // { value: undefined, done: true }
+					</code></pre>
+					<aside class="notes">
+						<p>Generator 函数返回的遍历器对象，还有一个return方法，可以返回给定的值，并且终结遍历 Generator 函数。</p>
+						<p>上面代码中，遍历器对象g调用return方法后，返回值的value属性就是return方法的参数foo。并且，Generator 函数的遍历就终止了，返回值的done属性为true，以后再调用next方法，done属性总是返回true。</p>
+					</aside>
+				</section>
+				<section>
+					<h2>延迟结束</h2>
+					<p>如果 Generator 函数内部有try...finally代码块，那么return方法会推迟到finally代码块执行完再执行。</p>
+					<pre class="fragment"><code data-trim="">
+						function* numbers () {
+						  yield 1;
+						  try {
+						    yield 2;
+						    yield 3;
+						  } finally {
+						    yield 4;
+						    yield 5;
+						  }
+						  yield 6;
+						}
+						var g = numbers();
+						g.next() // { value: 1, done: false }
+						g.next() // { value: 2, done: false }
+						g.return(7) // { value: 4, done: false }
+						g.next() // { value: 5, done: false }
+						g.next() // { value: 7, done: true }
+					</code></pre>
+					<aside class="notes">
+						<p>上面代码中，调用return方法后，就开始执行finally代码块，然后等到finally代码块执行完，再执行return方法</p>
+					</aside>
+				</section>
+				<section>
+					<h2>Generator与上下文</h2>
+					<aside class="notes">
+						<p>JavaScript 代码运行时，会产生一个全局的上下文环境（context，又称运行环境），包含了当前所有的变量和对象。然后，执行函数（或块级代码）的时候，又会在当前上下文环境的上层，产生一个函数运行的上下文，变成当前（active）的上下文，由此形成一个上下文环境的堆栈（context stack）。</p>
+						<p>这个堆栈是“后进先出”的数据结构，最后产生的上下文环境首先执行完成，退出堆栈，然后再执行完成它下层的上下文，直至所有代码执行完成，堆栈清空。</p>					</aside>
+					
+					<p>Generator 函数执行产生的上下文环境，一旦遇到yield命令，就会暂时退出堆栈，但是并不消失，里面的所有变量和对象会冻结在当前状态。等到对它执行next命令时，这个上下文环境又会重新加入调用栈，冻结的变量和对象恢复执行。</p>
+					<pre class="fragment"><code data-trim="">
+						function *gen() {
+						  yield 1;
+						  return 2;
+						}
+
+						let g = gen();
+
+						console.log(
+						  g.next().value,
+						  g.next().value,
+						);
+					</code></pre>
+					<aside class="notes">
+						<p>上面代码中，第一次执行g.next()时，Generator 函数gen的上下文会加入堆栈，即开始运行gen内部的代码。等遇到yield 1时，gen上下文退出堆栈，内部状态冻结。第二次执行g.next()时，gen上下文重新加入堆栈，变成当前的上下文，重新恢复执行。</p>
+					</aside>
+				</section>
+				<section>
+					<h2>应用</h2>
+					<h4>1. 异步操作的同步表达</h4>
+					<pre class="fragment"><code data-trim="">
+						function* loadUI() {
+						  showLoadingScreen();
+						  yield loadUIDataAsynchronously();
+						  hideLoadingScreen();
+						}
+						var loader = loadUI();
+						// 加载UI
+						loader.next()
+
+						// 卸载UI
+						loader.next()
+						</code></pre>
+						<aside class="notes">
+							<p>Generator 函数的一个重要实际意义就是用来处理异步操作，改写回调函数。</p>
+							<p>上面代码中，第一次调用loadUI函数时，该函数不会执行，仅返回一个遍历器。下一次对该遍历器调用next方法，则会显示Loading界面（showLoadingScreen），并且异步加载数据（loadUIDataAsynchronously）。等到数据加载完成，再一次使用next方法，则会隐藏Loading界面。可以看到，这种写法的好处是所有Loading界面的逻辑，都被封装在一个函数，按部就班非常清晰。</p>
+						</aside>
+				</section>
+				<section>
+					<h4>2. 控制流管理</h4>
+					<p>如果有一个多步操作非常耗时，采用回调函数，可能会写成下面这样。</p>
+					<pre class="fragment"><code data-trim="">
+						step1(function (value1) {
+						  step2(value1, function(value2) {
+						    step3(value2, function(value3) {
+						      step4(value3, function(value4) {
+						        // Do something with value4
+						      });
+						    });
+						  });
+						});
+
+						</code></pre>
+				</section>
+				<section>
+					<p>采用 Promise 改写上面的代码。</p>
+					<pre class="fragment"><code data-trim="">
+						Promise.resolve(step1)
+					  .then(step2)
+					  .then(step3)
+					  .then(step4)
+					  .then(function (value4) {
+					    // Do something with value4
+					  }, function (error) {
+					    // Handle any error from step1 through step4
+					  })
+					  .done();
+
+						</code></pre>
+						<aside class="notes">
+							<p class="fragment">上面代码已经把回调函数，改成了直线执行的形式，但是加入了大量 Promise 的语法。</p>
+						</aside>
+				</section>
+				<section>
+					<p class="fragment">Generator 函数可以进一步改善代码运行流程,然后，使用一个函数，按次序自动执行所有步骤。</p>
+					<pre class="fragment"><code data-trim="">
+						function* longRunningTask(value1) {
+						  try {
+						    var value2 = yield step1(value1);
+						    var value3 = yield step2(value2);
+						    var value4 = yield step3(value3);
+						    var value5 = yield step4(value4);
+						    // Do something with value4
+						  } catch (e) {
+						    // Handle any error from step1 through step4
+						  }
+						}
+
+						scheduler(longRunningTask(initialValue));
+
+						function scheduler(task) {
+						  var taskObj = task.next(task.value);
+						  // 如果Generator函数未结束，就继续调用
+						  if (!taskObj.done) {
+						    task.value = taskObj.value
+							  scheduler(task);
+						  }
+						}
+					</code></pre>
+						<aside class="notes">
+							<p>注意，上面这种做法，只适合同步操作，即所有的task都必须是同步的，不能有异步操作。因为这里的代码一得到返回值，就继续往下执行，没有判断异步操作何时完成。如果要控制异步的操作流程，详见后面的《异步操作》一章。</p>
+						</aside>
+				</section>
+				<section>
+					<p class="fragment">利用for...of循环会自动依次执行yield命令的特性，提供一种更一般的控制流管理的方法</p>
+					<pre class="fragment"><code data-trim="">
+						let steps = [step1Func, step2Func, step3Func];
+
+						function *iterateSteps(steps){
+						  for (var i=0; i< steps.length; i++){
+						    var step = steps[i];
+						    yield step();
+						  }
+						}
+						</code></pre>
+						<aside class="notes">
+							<p>上面代码中，数组steps封装了一个任务的多个步骤，Generator 函数iterateSteps则是依次为这些步骤加上yield命令。</p>
+						</aside>
+				</section>
+			</section>
+			<!-- Async 函数的语法 -->
+			<section id="async">
+				<section>
+					<h2> async 函数</h2>
+					<p>async 函数是什么？一句话，它就是 Generator 函数的语法糖。</p>
+					<pre class="fragment"><code data-trim="">
+						const fs = require('fs');
+						const readFile = function (fileName) {
+						  return new Promise(function (resolve, reject) {
+						    fs.readFile(fileName, function(error, data) {
+						      if (error) return reject(error);
+						      resolve(data);
+						    });
+						  });
+						};
+
+						const gen = function* () {
+						  const f1 = yield readFile('/etc/fstab');
+						  const f2 = yield readFile('/etc/shells');
+						  console.log(f1.toString());
+						  console.log(f2.toString());
+						};
+					</code></pre>
+				</section>
+				<section>
+					<p>写成async函数，就是下面这样。</p>
+					<pre class="fragment"><code data-trim="">
+						const asyncReadFile = async function () {
+						  const f1 = await readFile('/etc/fstab');
+						  const f2 = await readFile('/etc/shells');
+						  console.log(f1.toString());
+						  console.log(f2.toString());
+						};
+					</code></pre>
+				</section>
+				<section>
+					<h2>async函数对 Generator 函数的改进</h2>
+					<ul>
+						<li class="fragment">内置执行器</li>
+						<li class="fragment">更好的语义</li>
+						<li class="fragment">更广的适用性</li>
+						<li class="fragment">返回值是 Promise</li>
+					</ul>
+					<aside class="notes">
+						<p>Generator 函数的执行必须靠执行器，所以才有了co模块，而async函数自带执行器。也就是说，async函数的执行，与普通函数一模一样，只要一行。</p>
+						<p>async和await，比起星号和yield，语义更清楚了。async表示函数里有异步操作，await表示紧跟在后面的表达式需要等待结果。</p>
+						<p>co模块约定，yield命令后面只能是 Thunk 函数或 Promise 对象，而async函数的await命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时等同于同步操作）</p>
+						<p>async函数的返回值是 Promise 对象，这比 Generator 函数的返回值是 Iterator 对象方便多了。你可以用then方法指定下一步的操作。</p>
+					</aside>
+				</section>
+				<section>
+					<h2>基本用法</h2>
+					<p>async函数返回一个 Promise 对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。</p>
+					<pre class="fragment"><code data-trim="">
+						async function getStockPriceByName(name) {
+						  const symbol = await getStockSymbol(name);
+						  const stockPrice = await getStockPrice(symbol);
+						  return stockPrice;
+						}
+
+						getStockPriceByName('goog').then(function (result) {
+						  console.log(result);
+						});
+					</code></pre>
+					<aside class="notes">
+						<p>上面代码是一个获取股票报价的函数，函数前面的async关键字，表明该函数内部有异步操作。调用该函数时，会立即返回一个Promise对象。</p>
+					</aside>
+				</section>
+				<section>
+					<h2>语法</h2>
+					<p>async函数的语法规则总体上比较简单，难点是错误处理机制。</p>
+					<p>async函数返回一个 Promise 对象</p>
+					<pre class="fragment"><code data-trim="">
+						async function f() {
+						  return 'hello world';
+						}
+
+						f().then(v => console.log(v))
+						// "hello world"
+					</code></pre>
+					<aside class="notes">
+						<p>async函数内部return语句返回的值，会成为then方法回调函数的参数</p>
+					</aside>
+				</section>
+				<section>
+					<p>async函数内部抛出错误，会导致返回的 Promise 对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到。</p>
+					<pre class="fragment"><code data-trim="">
+						async function f() {
+						  throw new Error('出错了');
+						}
+
+						f().then(
+						  v => console.log(v),
+						  e => console.log(e)
+						)
+						// Error: 出错了
+					</code></pre>
+				</section>
+				<section>
+					<h2>await命令</h2>
+					<p>正常情况下，await命令后面是一个 Promise 对象。如果不是，会被转成一个立即resolve的 Promise 对象。</p>
+					<pre class="fragment"><code data-trim="">
+						async function f() {
+						  return await 123;
+						}
+
+						f().then(v => console.log(v))
+						// 123
+					</code></pre>
+					<aside class="notes">
+						<p>上面代码中，await命令的参数是数值123，它被转成 Promise 对象，并立即resolve。</p>
+					</aside>
+				</section>
+				<section>
+					<h2>await命令</h2>
+					<p>await命令后面的 Promise 对象如果变为reject状态，则reject的参数会被catch方法的回调函数接收到。</p>
+					<pre class="fragment"><code data-trim="">
+						async function f() {
+						  await Promise.reject('出错了');
+						}
+
+						f()
+						.then(v => console.log(v))
+						.catch(e => console.log(e))
+						// 出错了
+					</code></pre>
+					<aside class="notes">
+						<p>上面代码中，await语句前面没有return，但是reject方法的参数依然传入了catch方法的回调函数。这里如果在await前面加上return，效果是一样的。</p>
+						<p>只要一个await语句后面的 Promise 变为reject，那么整个async函数都会中断执行。</p>
+					</aside>
+				</section>
+				<section>
+					<h2>错误处理</h2>
+					<p>如果await后面的异步操作出错，那么等同于async函数返回的 Promise 对象被reject。防止出错的方法，也是将其放在try...catch代码块之中。</p>
+					<pre class="fragment"><code data-trim="">
+						async function main() {
+						  try {
+						    const val1 = await firstStep();
+						    const val2 = await secondStep(val1);
+						    const val3 = await thirdStep(val1, val2);
+
+						    console.log('Final: ', val3);
+						  }
+						  catch (err) {
+						    console.error(err);
+						  }
+						}
+					</code></pre>
+					<aside class="notes">
+						<p>上面代码中，await语句前面没有return，但是reject方法的参数依然传入了catch方法的回调函数。这里如果在await前面加上return，效果是一样的。</p>
+						<p>只要一个await语句后面的 Promise 变为reject，那么整个async函数都会中断执行。</p>
+					</aside>
+				</section>
+				<section>
+					<h2>实现原理</h2>
+					<p>async 函数的实现原理，就是将 Generator 函数和自动执行器，包装在一个函数里。</p>
+					<pre class="fragment"><code data-trim="">
+
+					async function fn(args) {
+					  // ...
+					}
+
+					// 等同于
+
+					function fn(args) {
+					  return spawn(function* () {
+					    // ...
+					  });
+					}
+					</code></pre>
+
+				</section>
+			</section>
+			 
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
+</div></article></div></main><footer><div class="paginator"></div><div class="copyright"><p>© 2015 - 2018 <a href="http://yoursite.com">Robin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
