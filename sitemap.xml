@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/05/07/ios-install-ipa/</loc>
+    
+    <lastmod>2018-05-07T09:25:08.213Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/05/07/ios-deviceToken-Production/</loc>
+    
+    <lastmod>2018-05-07T09:24:44.063Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/25/objc-meta-class/</loc>
+    
+    <lastmod>2018-04-25T07:50:38.132Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/24/len-of-substring-without-repeate/</loc>
+    
+    <lastmod>2018-04-24T09:28:49.654Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2018-04-23T12:09:44.533Z</lastmod>
