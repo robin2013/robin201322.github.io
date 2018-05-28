@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-07T09:24:44.063Z</updated>
+  <updated>2018-05-28T07:55:35.282Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac pro上网满解决方案</title>
+    <link href="http://yoursite.com/2018/05/28/mac-network/"/>
+    <id>http://yoursite.com/2018/05/28/mac-network/</id>
+    <published>2018-05-28T07:48:10.000Z</published>
+    <updated>2018-05-28T07:55:35.282Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mac最近上网很慢, 慢到令人发指, 刚买的新路由器也不行, 感觉不对, 就在网上找解决方案, 还真好到一个有用<br>的, 但是, 我很无语:<br>在“系统偏好设置”－“网络”－打开“位置”－“编辑位置”－点“➕”－随便编一个名字－确定，改自动为你刚才添加的那个网络。<br><img src="https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=575b64d9a486c91708565a3ff90d5cf7/2fdda3cc7cd98d10c3788c10223fb80e7bec9067.jpg" alt=""><br>效果不错, 居然还有这操作!<br><a href="https://blog.csdn.net/prliu/article/details/53945462" target="_blank" rel="noopener">参考</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Mac最近上网很慢, 慢到令人发指, 刚买的新路由器也不行, 感觉不对, 就在网上找解决方案, 还真好到一个有用&lt;br&gt;的, 但是, 我很无语:&lt;br&gt;在“系统偏好设置”－“网络”－打开“位置”－“编辑位置”－点“➕”－随便编一个名字－确定，改自动为你刚才添加的那个网络。&lt;
+      
+    
+    </summary>
+    
+      <category term="Mac" scheme="http://yoursite.com/categories/Mac/"/>
+    
+    
+      <category term="上网" scheme="http://yoursite.com/tags/%E4%B8%8A%E7%BD%91/"/>
+    
+  </entry>
   
   <entry>
     <title>获取Production下的APNS deviceToken</title>
