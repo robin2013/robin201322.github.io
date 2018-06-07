@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-28T07:57:35.231Z</updated>
+  <updated>2018-06-07T14:29:27.067Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jianli</title>
+    <link href="http://yoursite.com/2018/06/07/jianli/"/>
+    <id>http://yoursite.com/2018/06/07/jianli/</id>
+    <published>2018-06-07T14:29:02.000Z</published>
+    <updated>2018-06-07T14:29:27.067Z</updated>
+    
+    <content type="html"><![CDATA[<p>简历<br><a href="http://www.500d.me/cvresume/4001188279/" target="_blank" rel="noopener">简历</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;简历&lt;br&gt;&lt;a href=&quot;http://www.500d.me/cvresume/4001188279/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;简历&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>norma_sort</title>
+    <link href="http://yoursite.com/2018/06/07/norma-sort/"/>
+    <id>http://yoursite.com/2018/06/07/norma-sort/</id>
+    <published>2018-06-07T09:21:17.000Z</published>
+    <updated>2018-06-07T14:28:43.578Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func bub(array: inout [Int]) &#123;</span><br><span class="line">    for i in 0..&lt;array.count &#123;</span><br><span class="line">        for j in (i..&lt;array.count-1).reversed() &#123;</span><br><span class="line">            if array[j] &gt; array[j+1] &#123;</span><br><span class="line">                array.swapAt(j, j+1)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    print(array)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>###简单排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func simpleSelector(array: [Int]) &#123;</span><br><span class="line">    var array = array</span><br><span class="line">    for i in 0..&lt;array.count &#123;</span><br><span class="line">        var min = i</span><br><span class="line">        for j in i..&lt;array.count &#123;</span><br><span class="line">            if array[j] &lt; array[min] &#123;</span><br><span class="line">                min = j</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if i != min &#123;</span><br><span class="line">           array.swapAt(min, i)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    print(array)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func inserctionSort(_ array:[Int]) &#123;</span><br><span class="line">    var array = array</span><br><span class="line">    for i in 1..&lt;array.count &#123;</span><br><span class="line">        var offset = i</span><br><span class="line">        while offset&gt;0 &amp;&amp; (array[offset] &lt; array[offset-1]) &#123;</span><br><span class="line">            array.swapAt(offset, offset-1)</span><br><span class="line">            offset = offset - 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    print(array)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func inserctionSort(_ array:[Int]) &#123;</span><br><span class="line">    var array = array</span><br><span class="line">    for i in 1..&lt;array.count &#123;</span><br><span class="line">        var j = i</span><br><span class="line">        while j&gt;0 &#123;</span><br><span class="line">            if array[j] &lt; array[j-1] &#123;</span><br><span class="line">                let tmp = array[j-1]</span><br><span class="line">                array[j-1] = array[j]</span><br><span class="line">                array[j] = tmp</span><br><span class="line">                j = j - 1</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                break</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    print(array)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>###希尔排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">func shellSort(_ array:[Int]) &#123;</span><br><span class="line">    var array = array</span><br><span class="line">    var step = array.count/2</span><br><span class="line">    while step &gt; 0&#123;</span><br><span class="line">        print(step)</span><br><span class="line">        for i in 0..&lt;array.count &#123;</span><br><span class="line">            var j = i+step</span><br><span class="line">            while (j &gt;= step &amp;&amp; j &lt; array.count) &#123;</span><br><span class="line">                if array[j] &lt; array[j-step] &#123;</span><br><span class="line">                    let tmp = array[j]</span><br><span class="line">                    array[j] = array[j-step]</span><br><span class="line">                    array[j-step] = tmp</span><br><span class="line">                    j=j-step</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    break</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        step = step/2</span><br><span class="line">    &#125;</span><br><span class="line">    print(array)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">func counterSort(_ array:[Int]) &#123;</span><br><span class="line">    var array = array</span><br><span class="line">    var min = array[0]</span><br><span class="line">    var max = array[0]</span><br><span class="line">    for i in 1..&lt;array.count &#123;</span><br><span class="line">        min = array[i] &gt; min ? min : array[i]</span><br><span class="line">        max = array[i] &lt; max ? max : array[i]</span><br><span class="line">    &#125;</span><br><span class="line">    var tmp:[Int] = []</span><br><span class="line">    let len = max - min + 1</span><br><span class="line">    var counter:[Int] = Array(repeating: 0, count: len)</span><br><span class="line">    for i in 0..&lt;array.count &#123;</span><br><span class="line">        let index = array[i]-min</span><br><span class="line">        counter[index] += 1</span><br><span class="line">    &#125;</span><br><span class="line">    for i in 0..&lt;counter.count &#123;</span><br><span class="line">        if counter[i] &gt; 0 &#123;</span><br><span class="line">            for _ in 0..&lt;counter[i]&#123;</span><br><span class="line">               tmp.append(min+i)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    print(tmp)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;冒泡排序&quot;&gt;&lt;a href=&quot;#冒泡排序&quot; class=&quot;headerlink&quot; title=&quot;冒泡排序&quot;&gt;&lt;/a&gt;冒泡排序&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
+      
+    
+    </summary>
+    
+      <category term="Algorithms" scheme="http://yoursite.com/categories/Algorithms/"/>
+    
+    
+      <category term="Algorithms" scheme="http://yoursite.com/tags/Algorithms/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac pro上网慢解决方案</title>
